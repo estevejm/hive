@@ -1,0 +1,33 @@
+Hive\Fulfillment\Domain\Order\Order:
+    type: entity
+    repositoryClass: Hive\Fulfillment\Infrastructure\Repository\Doctrine\OrderRepository
+    table: orders
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+    fields:
+        externalId:
+            type: string
+
+            length: 50
+        placedAt:
+            type: datetime
+    embedded:
+        orderId:
+            class: Hive\Fulfillment\Domain\Order\OrderId
+        storeId:
+            class: Hive\Fulfillment\Domain\Store\StoreId
+        customerId:
+            class: Hive\Fulfillment\Domain\Customer\CustomerId
+        status:
+            class: Hive\Fulfillment\Domain\Order\Status
+    oneToMany:
+        lines:
+            targetEntity: Hive\Fulfillment\Domain\Order\Line
+            mappedBy: order
+            cascade: ["all"]
+    uniqueConstraints:
+        store_orders_idx:
+            columns: external_id,store_id_uuid

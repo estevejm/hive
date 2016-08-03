@@ -1,0 +1,13 @@
+services:
+    import_order_handler:
+        class: Hive\Fulfillment\Application\Order\ImportOrderHandler
+        arguments:
+            - "@order_repository"
+        tags:
+            - { name: command_handler, handles: 'import_order' }
+
+    order_repository:
+        class: Hive\Fulfillment\Domain\Order\OrderRepository
+        factory: ["@doctrine", getRepository]
+        arguments:
+            - "\\Hive\\Fulfillment\\Domain\\Order\\Order"

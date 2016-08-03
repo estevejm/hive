@@ -1,0 +1,18 @@
+Hive\Fulfillment\Domain\Order\Line:
+    type: entity
+    table: order_lines
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+    fields:
+        number:
+            type: integer
+        sku:
+            type: string
+            length: 50
+    manyToOne:
+        order:
+            targetEntity: Hive\Fulfillment\Domain\Order\Order
+            inversedBy: lines

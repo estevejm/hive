@@ -1,0 +1,5 @@
+Hive\Fulfillment\Domain\Store\StoreId:
+    type: embeddable
+    fields:
+        uuid:
+            type: guid

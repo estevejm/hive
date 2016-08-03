@@ -1,0 +1,9 @@
+Hive\Fulfillment\Domain\Order\Status:
+    type: embeddable
+    fields:
+        name:
+            type: string
+            length: 50
+        reason:
+            type: string
+            length: 50
