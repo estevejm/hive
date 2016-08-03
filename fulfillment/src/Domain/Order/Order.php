@@ -6,9 +6,13 @@ use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Hive\Fulfillment\Domain\Customer\CustomerId;
 use Hive\Fulfillment\Domain\Store\StoreId;
+use SimpleBus\Message\Recorder\ContainsRecordedMessages;
+use SimpleBus\Message\Recorder\PrivateMessageRecorderCapabilities;
 
-class Order
+class Order implements ContainsRecordedMessages
 {
+    use PrivateMessageRecorderCapabilities;
+
     /**
      * @var int
      */
@@ -71,7 +75,7 @@ class Order
         $this->placedAt = $placedAt;
         $this->lines = new ArrayCollection();
 
-        // TODO: publish domain event
+        $this->record(new OrderImported($this->orderId));
     }
 
     /**

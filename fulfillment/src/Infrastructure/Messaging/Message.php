@@ -6,5 +6,4 @@ use SimpleBus\Message\Name\NamedMessage;
 
 interface Message extends NamedMessage
 {
-
 }

@@ -24,7 +24,8 @@
         "incenteev/composer-parameter-handler": "^2.0",
         "ramsey/uuid": "^3.4",
         "simple-bus/symfony-bridge": "^4.1",
-        "beberlei/assert": "^2.6"
+        "beberlei/assert": "^2.6",
+        "simple-bus/doctrine-orm-bridge": "^4.0"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",

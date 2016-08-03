@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "af01f5442aba6e0a0200a9852da09c20",
-    "content-hash": "b05da206129289b0be637e2712f62087",
+    "hash": "8766f43878ce15b19ce34c6654da898b",
+    "content-hash": "9178d3061a78aae94345a9fe1ce6ae0c",
     "packages": [
         {
             "name": "beberlei/assert",
@@ -1381,6 +1381,60 @@
             ],
             "description": "A security checker for your composer.lock",
             "time": "2015-11-07 08:07:40"
+        },
+        {
+            "name": "simple-bus/doctrine-orm-bridge",
+            "version": "v4.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/SimpleBus/DoctrineORMBridge.git",
+                "reference": "46df998f26940d9525f8e35c40641328c679dbfe"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/SimpleBus/DoctrineORMBridge/zipball/46df998f26940d9525f8e35c40641328c679dbfe",
+                "reference": "46df998f26940d9525f8e35c40641328c679dbfe",
+                "shasum": ""
+            },
+            "require": {
+                "beberlei/assert": "~2.0",
+                "doctrine/orm": "~2.2",
+                "php": ">=5.4",
+                "simple-bus/message-bus": "~2.0"
+            },
+            "require-dev": {
+                "matthiasnoback/doctrine-orm-test-service-provider": "~2.0",
+                "phpunit/phpunit": "~4.5",
+                "satooshi/php-coveralls": "~0.6"
+            },
+            "suggest": {
+                "simple-bus/symfony-bridge": "Bridge for using command buses and event buses with Symfony"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "SimpleBus\\DoctrineORMBridge\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Matthias Noback",
+                    "email": "matthiasnoback@gmail.com",
+                    "homepage": "http://php-and-symfony.matthiasnoback.nl"
+                }
+            ],
+            "description": "Doctrine ORM bridge for using command and event buses",
+            "homepage": "http://github.com/SimpleBus/DoctrineORMBridge",
+            "keywords": [
+                "command bus",
+                "doctrine",
+                "event bus"
+            ],
+            "time": "2015-04-29 12:27:27"
         },
         {
             "name": "simple-bus/message-bus",
