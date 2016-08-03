@@ -6,13 +6,10 @@ use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Hive\Fulfillment\Domain\Customer\CustomerId;
 use Hive\Fulfillment\Domain\Store\StoreId;
-use SimpleBus\Message\Recorder\ContainsRecordedMessages;
-use SimpleBus\Message\Recorder\PrivateMessageRecorderCapabilities;
+use Hive\Fulfillment\Infrastructure\Entity\AggregateRoot;
 
-class Order implements ContainsRecordedMessages
+class Order extends AggregateRoot
 {
-    use PrivateMessageRecorderCapabilities;
-
     /**
      * @var int
      */

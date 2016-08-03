@@ -14,7 +14,7 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
-        $this->get('command_bus')->handle(new ImportOrder('H-004', 'HIVE_ES', 'C001', new \DateTime(), [
+        $this->get('command_bus')->handle(new ImportOrder('H-005', 'HIVE_ES', 'C001', new \DateTime(), [
             [
                 'sku' => '123456',
                 'number' => 1
