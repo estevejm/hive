@@ -46,6 +46,7 @@ class ImportOrder implements Message
         DateTime $placedAt,
         array $lines
     ) {
+        // todo: validate line format
         $this->externalId = $externalId;
         $this->storeId = $storeId;
         $this->customerId = $customerId;

@@ -1,0 +1,6 @@
+Hive\Fulfillment\Domain\Order\OrderImported:
+    exclusion_policy: all
+    properties:
+        orderId:
+            expose: true
+            type: Hive\Fulfillment\Domain\Order\OrderId

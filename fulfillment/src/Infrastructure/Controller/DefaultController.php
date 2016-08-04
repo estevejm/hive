@@ -14,14 +14,14 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
-        $this->get('command_bus')->handle(new ImportOrder('H-005', 'HIVE_ES', 'C001', new \DateTime(), [
+        $this->get('command_bus')->handle(new ImportOrder('H-001-MQ-' . uniqid(), 'HIVE_MQ', 'C001', new \DateTime(), [
             [
                 'sku' => '123456',
                 'number' => 1
             ],
             [
                 'sku' => '789012',
-                'number' => 2
+                'number' => 3
             ]
         ]));
 

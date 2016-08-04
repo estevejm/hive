@@ -1,0 +1,6 @@
+Hive\Fulfillment\Domain\Order\OrderId:
+    exclusion_policy: all
+    properties:
+        uuid:
+            expose: true
+            type: string

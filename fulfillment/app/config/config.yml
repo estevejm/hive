@@ -70,6 +70,42 @@ swiftmailer:
     password:  "%mailer_password%"
     spool:     { type: memory }
 
+jms_serializer:
+    metadata:
+        auto_detection: true
+        directories:
+            AppBundle:
+                namespace_prefix: Hive\Fulfillment\Domain
+                path: "@AppBundle/Resources/config/serializer"
+
+old_sound_rabbit_mq:
+    connections:
+        default:
+            host:     rabbitmq
+            port:     5672
+            user:     guest
+            password: guest
+            vhost:    /
+            lazy:     false
+    producers:
+        asynchronous_commands:
+            connection:       default
+            exchange_options: { name: 'asynchronous_commands', type: direct }
+        asynchronous_events:
+            connection:       default
+            exchange_options: { name: 'asynchronous_events', type: direct }
+    consumers:
+        asynchronous_commands:
+            connection:       default
+            exchange_options: { name: 'asynchronous_commands', type: direct }
+            queue_options:    { name: 'asynchronous_commands' }
+            callback:         simple_bus.rabbit_mq_bundle_bridge.commands_consumer
+        asynchronous_events:
+            connection:       default
+            exchange_options: { name: 'asynchronous_events', type: direct }
+            queue_options:    { name: 'asynchronous_events' }
+            callback:         simple_bus.rabbit_mq_bundle_bridge.events_consumer
+
 command_bus:
     command_name_resolver_strategy: named_message
     logging: ~
@@ -77,3 +113,16 @@ command_bus:
 event_bus:
     event_name_resolver_strategy: named_message
     logging: ~
+
+simple_bus_asynchronous:
+    object_serializer_service_id: simple_bus.jms_serializer.object_serializer
+    commands:
+        logging: ~
+    events:
+        logging: ~
+
+simple_bus_rabbit_mq_bundle_bridge:
+    commands:
+        producer_service_id: old_sound_rabbit_mq.asynchronous_commands_producer
+    events:
+        producer_service_id: old_sound_rabbit_mq.asynchronous_events_producer

@@ -13,6 +13,7 @@ php:
         - ./:/app
     links:
         - mysql
+        - rabbitmq
     working_dir: /app
 
 mysql:
@@ -24,6 +25,7 @@ mysql:
      - MYSQL_PASSWORD=fulfiller
 
 rabbitmq:
-    image: rabbitmq:3.6.3
+    image: rabbitmq:3.6-management
     ports:
+        - "15673:15672"
         - "5673:5672"

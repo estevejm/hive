@@ -4,7 +4,7 @@ services:
         arguments:
             - "@order_repository"
         tags:
-            - { name: command_handler, handles: 'import_order' }
+            - { name: asynchronous_command_handler, handles: 'import_order' }
 
     order_repository:
         class: Hive\Fulfillment\Domain\Order\OrderRepository
