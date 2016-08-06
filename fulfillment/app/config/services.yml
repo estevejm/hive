@@ -2,7 +2,7 @@ services:
     import_order_handler:
         class: Hive\Fulfillment\Application\Order\ImportOrderHandler
         arguments:
-            - "@order_repository"
+            - '@order_repository'
         tags:
             - { name: asynchronous_command_handler, handles: 'import_order' }
 
@@ -10,4 +10,17 @@ services:
         class: Hive\Fulfillment\Domain\Order\OrderRepository
         factory: ["@doctrine", getRepository]
         arguments:
-            - "\\Hive\\Fulfillment\\Domain\\Order\\Order"
+            - '\Hive\Fulfillment\Domain\Order\Order'
+
+    hive.envelope_factory:
+        class: Hive\Fulfillment\Infrastructure\Messaging\EnvelopeFactory
+
+    hive.message_serializer:
+        class: Hive\Fulfillment\Infrastructure\Messaging\NamedMessageInEnvelopeSerializer
+        arguments:
+            - '@hive.envelope_factory'
+            - '@simple_bus.jms_serializer.object_serializer'
+
+    # override
+    simple_bus.asynchronous.message_serializer:
+        alias: hive.message_serializer
