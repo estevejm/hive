@@ -1,0 +1,42 @@
+nginx:
+    image: nginx
+    ports:
+        - "80:80"
+    volumes:
+        - ./:/app
+        - ./docker/nginx/vhost/api.conf:/etc/nginx/conf.d/api.conf
+        - ./docker/nginx/vhost/fulfillment.conf:/etc/nginx/conf.d/fulfillment.conf
+    links:
+        - api_php
+        - fulfillment_php
+
+rabbitmq:
+    image: rabbitmq:3.6-management
+    ports:
+        - "15672:15672"
+        - "5672:5672"
+
+api_php:
+    image: estevejm/hive-php
+    volumes:
+        - ./api/:/app/api
+    links:
+        - rabbitmq
+    working_dir: /app/api
+
+fulfillment_php:
+    image: estevejm/hive-php
+    volumes:
+        - ./fulfillment/:/app/fulfillment
+    links:
+        - fulfillment_mysql
+        - rabbitmq
+    working_dir: /app/fulfillment
+
+fulfillment_mysql:
+  image: mysql:5.7
+  environment:
+     - MYSQL_ROOT_PASSWORD=verysecret
+     - MYSQL_DATABASE=fulfillment
+     - MYSQL_USER=fulfiller
+     - MYSQL_PASSWORD=fulfiller
