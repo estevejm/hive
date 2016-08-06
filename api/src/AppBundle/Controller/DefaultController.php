@@ -1,6 +1,6 @@
 <?php
 
-namespace Hive\Api\Infrastructure\Controller;
+namespace Hive\Api\AppBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;

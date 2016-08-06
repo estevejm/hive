@@ -1,6 +1,6 @@
 <?php
 
-namespace Hive\Api\Infrastructure;
+namespace Hive\Api\AppBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 

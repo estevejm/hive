@@ -23,7 +23,7 @@ class AppKernel extends Kernel
             new SimpleBus\JMSSerializerBundleBridge\SimpleBusJMSSerializerBundleBridgeBundle(),
             new SimpleBus\AsynchronousBundle\SimpleBusAsynchronousBundle(),
             new SimpleBus\RabbitMQBundleBridge\SimpleBusRabbitMQBundleBridgeBundle(),
-            new Hive\Api\Infrastructure\AppBundle(),
+            new Hive\Api\AppBundle\AppBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

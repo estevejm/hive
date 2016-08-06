@@ -1,6 +1,6 @@
 <?php
 
-namespace Hive\Api\Infrastructure\Messaging;
+namespace Hive\Api\AppBundle\Messaging;
 
 use SimpleBus\Message\Name\NamedMessage;
 
