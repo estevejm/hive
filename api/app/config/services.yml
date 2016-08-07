@@ -1,1 +1,4 @@
 services:
+    # override
+    simple_bus.asynchronous.message_serializer:
+        alias: hive_serializer.message_serializer

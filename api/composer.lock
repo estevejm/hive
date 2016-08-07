@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "622562171c7d5156c47e17a2e8dcebc0",
-    "content-hash": "705fdda7a7d33aca77179c8e9994aac3",
+    "hash": "c65b43bad29941752b2e59feec22673d",
+    "content-hash": "7085fdca63eea12dca53d9466d9a70a7",
     "packages": [
         {
             "name": "beberlei/assert",
@@ -834,6 +834,42 @@
             "time": "2016-01-05 21:34:58"
         },
         {
+            "name": "hive/simple-bus-named-message-envelope-bundle",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "../component/simple-bus-named-message-envelope-bundle",
+                "reference": "2a1acc08399291fbef74a5fb507b481b78244fdb",
+                "shasum": null
+            },
+            "require": {
+                "beberlei/assert": "^2.6",
+                "simple-bus/asynchronous-bundle": "^2.1",
+                "simple-bus/message-bus": "^2.2",
+                "simple-bus/serialization": "^2.0",
+                "symfony/dependency-injection": "^3.1",
+                "symfony/http-kernel": "^3.1"
+            },
+            "type": "project",
+            "autoload": {
+                "psr-4": {
+                    "Hive\\Component\\Serializer\\": "src/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Tests\\": "tests/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "description": "Add support for envelopes for named messages in simple bus serializer",
+            "transport-options": {
+                "symlink": false
+            }
+        },
+        {
             "name": "incenteev/composer-parameter-handler",
             "version": "v2.1.2",
             "source": {
@@ -1627,6 +1663,60 @@
                 "message bus"
             ],
             "time": "2016-04-13 15:34:52"
+        },
+        {
+            "name": "simple-bus/doctrine-orm-bridge",
+            "version": "v4.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/SimpleBus/DoctrineORMBridge.git",
+                "reference": "46df998f26940d9525f8e35c40641328c679dbfe"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/SimpleBus/DoctrineORMBridge/zipball/46df998f26940d9525f8e35c40641328c679dbfe",
+                "reference": "46df998f26940d9525f8e35c40641328c679dbfe",
+                "shasum": ""
+            },
+            "require": {
+                "beberlei/assert": "~2.0",
+                "doctrine/orm": "~2.2",
+                "php": ">=5.4",
+                "simple-bus/message-bus": "~2.0"
+            },
+            "require-dev": {
+                "matthiasnoback/doctrine-orm-test-service-provider": "~2.0",
+                "phpunit/phpunit": "~4.5",
+                "satooshi/php-coveralls": "~0.6"
+            },
+            "suggest": {
+                "simple-bus/symfony-bridge": "Bridge for using command buses and event buses with Symfony"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "SimpleBus\\DoctrineORMBridge\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Matthias Noback",
+                    "email": "matthiasnoback@gmail.com",
+                    "homepage": "http://php-and-symfony.matthiasnoback.nl"
+                }
+            ],
+            "description": "Doctrine ORM bridge for using command and event buses",
+            "homepage": "http://github.com/SimpleBus/DoctrineORMBridge",
+            "keywords": [
+                "command bus",
+                "doctrine",
+                "event bus"
+            ],
+            "time": "2015-04-29 12:27:27"
         },
         {
             "name": "simple-bus/message-bus",
@@ -3096,8 +3186,10 @@
         }
     ],
     "aliases": [],
-    "minimum-stability": "stable",
-    "stability-flags": [],
+    "minimum-stability": "dev",
+    "stability-flags": {
+        "hive/simple-bus-named-message-envelope-bundle": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

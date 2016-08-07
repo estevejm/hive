@@ -22,6 +22,7 @@ class AppKernel extends Kernel
             new SimpleBus\JMSSerializerBundleBridge\SimpleBusJMSSerializerBundleBridgeBundle(),
             new SimpleBus\AsynchronousBundle\SimpleBusAsynchronousBundle(),
             new SimpleBus\RabbitMQBundleBridge\SimpleBusRabbitMQBundleBridgeBundle(),
+            new Hive\Component\Serializer\HiveSimpleBusNamedMessageEnvelopeBundle(),
             new Hive\Api\AppBundle\AppBundle(),
         ];
 

@@ -1,4 +1,8 @@
 services:
+    # override
+    simple_bus.asynchronous.message_serializer:
+        alias: hive_serializer.message_serializer
+
     import_order_handler:
         class: Hive\Fulfillment\Application\Order\ImportOrderHandler
         arguments:
@@ -11,7 +15,3 @@ services:
         factory: ["@doctrine", getRepository]
         arguments:
             - '\Hive\Fulfillment\Domain\Order\Order'
-
-    # override
-    simple_bus.asynchronous.message_serializer:
-        alias: hive_serializer.message_serializer

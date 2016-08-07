@@ -1,0 +1,18 @@
+Hive\Api\AppBundle\Entity\ImportOrder:
+    exclusion_policy: all
+    properties:
+        externalId:
+            expose: true
+            type: string
+        storeId:
+            expose: true
+            type: string
+        customerId:
+            expose: true
+            type: string
+        placedAt:
+            expose: true
+            type: DateTime
+        lines:
+            expose: true
+            type: array

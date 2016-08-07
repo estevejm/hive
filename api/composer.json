@@ -10,6 +10,15 @@
     "autoload-dev": {
         "psr-4": { "Tests\\": "tests/" }
     },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "../component/simple-bus-named-message-envelope-bundle",
+            "options": {
+                "symlink": false
+            }
+        }
+    ],
     "require": {
         "php": ">=5.5.9",
         "symfony/symfony": "3.1.*",
@@ -26,7 +35,8 @@
         "simple-bus/symfony-bridge": "^4.1",
         "beberlei/assert": "^2.6",
         "simple-bus/doctrine-orm-bridge": "^4.0",
-        "simple-bus/rabbitmq-bundle-bridge": "^3.0"
+        "simple-bus/rabbitmq-bundle-bridge": "^3.0",
+        "hive/simple-bus-named-message-envelope-bundle": "dev-master"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",
@@ -68,5 +78,6 @@
         "branch-alias": {
             "dev-master": "3.1-dev"
         }
-    }
+    },
+    "minimum-stability": "dev"
 }
