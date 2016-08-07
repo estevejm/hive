@@ -8,7 +8,7 @@ services:
         arguments:
             - '@order_repository'
         tags:
-            - { name: asynchronous_command_handler, handles: 'import_order' }
+            - { name: asynchronous_command_handler, handles: 'import_order', deserializedInto: 'Hive\Fulfillment\Domain\Order\ImportOrder' }
 
     order_repository:
         class: Hive\Fulfillment\Domain\Order\OrderRepository
