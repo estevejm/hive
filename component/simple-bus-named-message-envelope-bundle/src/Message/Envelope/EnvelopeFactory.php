@@ -1,6 +1,6 @@
 <?php
 
-namespace Hive\Component\Serializer\Envelope;
+namespace Hive\Component\Serializer\Message\Envelope;
 
 use Assert\Assertion;
 use SimpleBus\Message\Name\NamedMessage;

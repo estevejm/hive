@@ -1,10 +1,17 @@
 services:
     hive_serializer.envelope_factory:
-        class: Hive\Component\Serializer\Envelope\EnvelopeFactory
+        class: Hive\Component\Serializer\Message\Envelope\EnvelopeFactory
+
+    hive_serializer.message_registry:
+        class: Hive\Component\Serializer\Message\Registry
+        public: false
+        arguments:
+            - '%hive_serializer.message_map%'
 
     hive_serializer.message_serializer:
-        class: Hive\Component\Serializer\Envelope\Serializer\NamedMessageInEnvelopeSerializer
+        class: Hive\Component\Serializer\Message\Serializer\NamedMessageInEnvelopeSerializer
         arguments:
             - '@hive_serializer.envelope_factory'
             # configured inside the bundle configuration
             - '@simple_bus.asynchronous.object_serializer'
+            - '@hive_serializer.message_registry'
