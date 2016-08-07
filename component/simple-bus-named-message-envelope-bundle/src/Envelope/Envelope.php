@@ -1,6 +1,6 @@
 <?php
 
-namespace Hive\Fulfillment\Infrastructure\Messaging;
+namespace Hive\Component\Serializer\Envelope;
 
 use SimpleBus\Serialization\Envelope\DefaultEnvelope;
 

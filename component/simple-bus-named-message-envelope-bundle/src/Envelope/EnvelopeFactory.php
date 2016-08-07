@@ -1,15 +1,16 @@
 <?php
 
-namespace Hive\Fulfillment\Infrastructure\Messaging;
+namespace Hive\Component\Serializer\Envelope;
 
-use Hive\Fulfillment\Infrastructure\Validation\Assertion;
+use Assert\Assertion;
+use SimpleBus\Message\Name\NamedMessage;
 use SimpleBus\Serialization\Envelope\EnvelopeFactory as EnvelopeFactoryInterface;
 
 class EnvelopeFactory implements EnvelopeFactoryInterface
 {
     public function wrapMessageInEnvelope($message)
     {
-        Assertion::isInstanceOf($message, Message::class, 'This envelope only supports Named Messages');
+        Assertion::isInstanceOf($message, NamedMessage::class, 'This envelope only supports Named Messages');
 
         return Envelope::forNamedMessage($message->messageName(), $message);
     }

@@ -1,0 +1,10 @@
+services:
+    hive_serializer.envelope_factory:
+        class: Hive\Component\Serializer\Envelope\EnvelopeFactory
+
+    hive_serializer.message_serializer:
+        class: Hive\Component\Serializer\Envelope\Serializer\NamedMessageInEnvelopeSerializer
+        arguments:
+            - '@hive_serializer.envelope_factory'
+            # configured inside the bundle configuration
+            - '@simple_bus.asynchronous.object_serializer'

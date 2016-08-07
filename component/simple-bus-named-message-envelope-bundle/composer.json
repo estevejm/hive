@@ -1,0 +1,20 @@
+{
+  "name": "hive/simple-bus-named-message-envelope-bundle",
+  "license": "MIT",
+  "type": "project",
+  "description": "Add support for envelopes for named messages in simple bus serializer",
+  "autoload": {
+    "psr-4": { "Hive\\Component\\Serializer\\": "src/" }
+  },
+  "autoload-dev": {
+    "psr-4": { "Tests\\": "tests/" }
+  },
+  "require": {
+    "beberlei/assert": "^2.6",
+    "simple-bus/serialization": "^2.0",
+    "simple-bus/message-bus": "^2.2",
+    "simple-bus/asynchronous-bundle": "^2.1",
+    "symfony/http-kernel": "^3.1",
+    "symfony/dependency-injection": "^3.1"
+  }
+}

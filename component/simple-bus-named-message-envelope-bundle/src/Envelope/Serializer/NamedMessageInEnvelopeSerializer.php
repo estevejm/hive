@@ -1,8 +1,7 @@
 <?php
 
-namespace Hive\Fulfillment\Infrastructure\Messaging;
+namespace Hive\Component\Serializer\Envelope\Serializer;
 
-use Hive\Fulfillment\Domain\Order\ImportOrder;
 use SimpleBus\Serialization\Envelope\Envelope;
 use SimpleBus\Serialization\Envelope\EnvelopeFactory;
 use SimpleBus\Serialization\Envelope\Serializer\MessageInEnvelopSerializer;
@@ -109,6 +108,6 @@ class NamedMessageInEnvelopeSerializer implements MessageInEnvelopSerializer
 
     private function getMessageClass($messageType)
     {
-        return ImportOrder::class;
+        return 'Hive\Fulfillment\Domain\Order\ImportOrder';
     }
 }
