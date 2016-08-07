@@ -120,6 +120,7 @@ event_bus:
     logging: ~
 
 simple_bus_asynchronous:
+    object_serializer_service_id: simple_bus.jms_serializer.object_serializer
     commands:
         logging: ~
     events:
