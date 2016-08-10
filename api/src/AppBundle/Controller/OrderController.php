@@ -4,6 +4,7 @@ namespace Hive\Api\AppBundle\Controller;
 
 use Hive\Api\AppBundle\Entity\ImportOrder;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Swagger\Annotations as SWG;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -15,6 +16,11 @@ use Symfony\Component\HttpFoundation\Response;
 class OrderController extends Controller
 {
     /**
+     * @SWG\Post(
+     *     path="/orders",
+     *     @SWG\Response(response="202", description="Order import accepted")
+     * )
+     *
      * @Route("/", name="import_order")
      */
     public function importAction(Request $request)

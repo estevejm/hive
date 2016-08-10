@@ -36,7 +36,8 @@
         "beberlei/assert": "^2.6",
         "simple-bus/doctrine-orm-bridge": "^4.0",
         "simple-bus/rabbitmq-bundle-bridge": "^3.0",
-        "hive/simple-bus-named-message-envelope-bundle": "dev-master"
+        "hive/simple-bus-named-message-envelope-bundle": "dev-master",
+        "zircote/swagger-php": "^2.0"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",
