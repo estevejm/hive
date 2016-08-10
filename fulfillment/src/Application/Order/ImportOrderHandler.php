@@ -45,6 +45,7 @@ class ImportOrderHandler
             $order->addLine(new Line($order, $line['sku'], $line['number']));
         }
 
+        // todo: check invariants inside entity so it is always consistent!
         $this->checkInvariants($order);
 
         $this->orderRepository->save($order);

@@ -71,6 +71,10 @@ swiftmailer:
 jms_serializer:
     metadata:
         auto_detection: true
+        directories:
+            AppBundle:
+                namespace_prefix: Hive\Api\AppBundle\Entity
+                path: "@AppBundle/Resources/config/serializer"
 
 old_sound_rabbit_mq:
     connections:
