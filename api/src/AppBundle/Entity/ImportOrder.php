@@ -4,31 +4,55 @@ namespace Hive\Api\AppBundle\Entity;
 
 use DateTime;
 use Hive\Api\AppBundle\Messaging\Message;
+use Swagger\Annotations as SWG;
 
+/**
+ * @SWG\Definition(
+ *     definition="ImportOrder"
+ * )
+ */
 class ImportOrder implements Message
 {
     /**
      * @var string
+     *
+     * @SWG\Property(example="EXT-001")
      */
     private $externalId;
 
     /**
      * @var string
+     *
+     * @SWG\Property(example="HIVE_US")
      */
     private $storeId;
 
     /**
      * @var string
+     *
+     * @SWG\Property(example="1247274")
      */
     private $customerId;
 
     /**
      * @var DateTime
+     *
+     * @SWG\Property()
      */
     private $placedAt;
 
     /**
      * @var array
+     *
+     * @SWG\Property(
+     *     @SWG\Items(ref="#/definitions/ImportOrderLine")
+     * )
+     *
+     * @SWG\Definition(
+     *     definition="ImportOrderLine",
+     *     @SWG\Property(property="sku", type="string", example="SKU001"),
+     *     @SWG\Property(property="lineNumber", type="integer", example=1)
+     * )
      */
     private $lines;
 
