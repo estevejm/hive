@@ -4,6 +4,7 @@ namespace Hive\Api\AppBundle\Entity;
 
 use DateTime;
 use Hive\Api\AppBundle\Messaging\Message;
+use Assert\Assertion;
 use Swagger\Annotations as SWG;
 
 /**
@@ -16,28 +17,28 @@ class ImportOrder implements Message
     /**
      * @var string
      *
-     * @SWG\Property(example="EXT-001")
+     * @SWG\Property(property="external_id", example="EXT-001")
      */
     private $externalId;
 
     /**
      * @var string
      *
-     * @SWG\Property(example="HIVE_US")
+     * @SWG\Property(property="store_id", example="HIVE_US")
      */
     private $storeId;
 
     /**
      * @var string
      *
-     * @SWG\Property(example="1247274")
+     * @SWG\Property(property="customer_id", example="1247274")
      */
     private $customerId;
 
     /**
      * @var DateTime
      *
-     * @SWG\Property()
+     * @SWG\Property(property="placed_at", example="2016-08-18T00:06:07+0000")
      */
     private $placedAt;
 
@@ -45,13 +46,14 @@ class ImportOrder implements Message
      * @var array
      *
      * @SWG\Property(
+     *     property="lines",
      *     @SWG\Items(ref="#/definitions/ImportOrderLine")
      * )
      *
      * @SWG\Definition(
      *     definition="ImportOrderLine",
      *     @SWG\Property(property="sku", type="string", example="SKU001"),
-     *     @SWG\Property(property="lineNumber", type="integer", example=1)
+     *     @SWG\Property(property="line_number", type="integer", example=1)
      * )
      */
     private $lines;
@@ -63,19 +65,43 @@ class ImportOrder implements Message
      * @param DateTime $placedAt
      * @param array $lines
      */
-    public function __construct(
+    private function __construct(
         string $externalId,
         string $storeId,
         string $customerId,
         DateTime $placedAt,
         array $lines
     ) {
-        // todo: validate line format
+        Assertion::notEmpty($lines);
+        Assertion::allKeyExists($lines, 'sku');
+        Assertion::allKeyExists($lines, 'line_number');
+
         $this->externalId = $externalId;
         $this->storeId = $storeId;
         $this->customerId = $customerId;
         $this->placedAt = $placedAt;
         $this->lines = $lines;
+    }
+
+    /**
+     * @param array $data
+     * @return ImportOrder
+     */
+    public static function fromArray(array $data)
+    {
+        Assertion::keyExists($data, 'external_id');
+        Assertion::keyExists($data, 'store_id');
+        Assertion::keyExists($data, 'customer_id');
+        Assertion::keyExists($data, 'placed_at');
+        Assertion::keyExists($data, 'lines');
+
+        return new self(
+            $data['external_id'],
+            $data['store_id'],
+            $data['customer_id'],
+            new DateTime($data['placed_at']),
+            $data['lines']
+        );
     }
 
     /**
